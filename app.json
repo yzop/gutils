@@ -1,0 +1,54 @@
+{
+	"name": "GUtils Telegram Bot",
+	"description": "GDUtils",
+	"repository": "https://github.com/Nenokkadine/GDUtilsTGBot",
+	"keywords": ["GDUtils","Bot"],
+	"env": {
+		"TG_BOT": {
+			"description": "Get from Telegram Botfather"
+		},
+		"TG_USER": {
+			"description": "Use You TG User Name not TG ID"
+		},
+		"DIR_ZIP_URL": {
+			"description": "Give a Direct ZIP URL that can be Downloaded using wget",
+			"required": false
+		},
+		"APP_NAME": {
+			"description": "Give Your app Name given above Here"
+		},
+		"REPO_NAME": {
+			"description": "Github Private Repo Name For Downloading Service Accounts",
+			"required": false
+		},
+		"GIT_USER": {
+			"description": "Your Github Username (Not Email)",
+			"required": false
+		},
+		"GIT_PASS": {
+			"description": "Your Github Password",
+			"required": false
+		},
+		"PARALLEL_PROCESS": {
+			"description": "No of Parallel Process Below Value is the Recommended One For Heroku",
+			"value": "250"
+		},
+		"DEFAULT_DEST": {
+			"description": "Default Destination For Copying",
+			"required": false
+		},
+		"CLIENT_ID": {
+			"description": "Client ID if Don't Use Service Accounts",
+			"required": false
+		},
+		"CLIENT_SECRET": {
+			"description": "Client ID if Don't Use Service Accounts",
+			"required": false
+		},
+		"REFRESH_TOKEN": {
+			"description": "Generated Refresh Token if Don't Use Service Accounts",
+			"required": false
+		}
+	},
+	"stack": "container"
+}
