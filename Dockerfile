@@ -5,7 +5,7 @@ COPY . .
 RUN apt-get -qq update && \
     apt-get install -y software-properties-common && \
     rm -rf /var/lib/apt/lists/* && \
-    apt-add-repository non-free && \
+    apt-add-repository multiverse && \
     apt-get -qq update && \
     apt-get install -y build-essential && \
     apt-get update && apt-get -y upgrade && apt-get install -y wget git curl nano unzip xz-utils && \
