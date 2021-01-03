@@ -1,4 +1,0 @@
-:{$PORT} {
-  reverse_proxy localhost:23333
-  reverse_proxy /term/* localhost:27332
-}
