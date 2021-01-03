@@ -25,16 +25,16 @@ async function get_folder_name (fid) {
 function send_help (chat_id) {
   const text = `
 <b>Command ｜ Description</b>
-╾─────────────────────╼
+➖➖➖➖➖➖➖➖➖➖➖➖
 <pre>/reload</pre> <b>|</b> Restart the Task
-╾─────────────────────╼
+➖➖➖➖➖➖➖➖➖➖➖➖
 <pre>/count FolderID [-u]</pre> <b>|</b> Calculates Size
 - adding <pre>-u</pre> at the end is optional <i>(info will be collected online)</i>
-╾─────────────────────╼
+➖➖➖➖➖➖➖➖➖➖➖➖
 <pre>/copy sourceID DestID [-u]</pre> <b>|</b> Clone Files（Will create a New Folder）
 - If targetID is not filled in, it will be copied to the default location (set in <pre>config.js</pre>)
 - adding <pre>-u</pre> at the end is optional <i>(info will be collected online)</i>
-╾─────────────────────╼
+➖➖➖➖➖➖➖➖➖➖➖➖
 <pre>/task</pre> <b>|</b> Shows info about the running task
 ⁍ Example：
 <pre>/task</pre> <b>|</b> Return Details Of All Running Tasks.
@@ -42,7 +42,7 @@ function send_help (chat_id) {
 <pre>/task all</pre> <b>|</b> Return The List Of All Tasks.
 <pre>/task clear</pre> <b>|</b> Clear All Completed Tasks.
 <pre>/task rm [ID]</pre> <b>|</b> Delete Specific Task.
-╾─────────────────────╼
+➖➖➖➖➖➖➖➖➖➖➖➖
 <pre>/bm [action] [alias] [target]</pre> <b>|</b> Add a common FolderID as Bookmark
 - <i>Helpful while cloning to same destination folder multiple times</i>
 ⁍ Example：
@@ -146,7 +146,7 @@ function send_choice ({ fid, chat_id }) {
 
 // console.log(gen_bookmark_choices())
 function gen_bookmark_choices (fid) {
-  const gen_choice = v => ({ text: `Clone to ${v.alias}`, callback_data: `Clone ${fid} ${v.alias}` })
+  const gen_choice = v => ({ text: `Clone to ${v.alias}`, callback_data: `copy ${fid} ${v.alias}` })
   const records = db.prepare('select * from bookmark').all()
   const result = []
   for (let i = 0; i < records.length; i += 2) {
