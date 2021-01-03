@@ -9,7 +9,7 @@ RUN apt-get -qq update && \
     apt-get -qq update && \
     apt-get install -y build-essential && \
     apt-get update && apt-get -y upgrade && apt-get install -y wget git curl nano unzip xz-utils && \
-    curl -sL https://deb.nodesource.com/setup_14.x | bash && apt-get install -y nodejs npm && apt-get install -y gcc g++ make parallel && \
+    curl -sL https://deb.nodesource.com/setup_14.x | bash && apt-get install -y nodejs && apt-get install -y gcc g++ make parallel && \
     npm install dayjs --save && \
     npm install pm2 -g && \
     npm install --unsafe-perm=true --allow-root
