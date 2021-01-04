@@ -1,7 +1,7 @@
 FROM ubuntu:latest
 COPY package.json /gdutils/
 RUN apt-get -qq update && \
-    apt-get install libssl-dev libcurl4-openssl-dev python-dev
+    apt-get install -y libssl-dev libcurl4-openssl-dev python-dev
 RUN apt-get -qq update && \
     apt-get install -y software-properties-common && \
     rm -rf /var/lib/apt/lists/* && \
