@@ -1,5 +1,5 @@
 FROM ubuntu:latest
-COPY package.json /gdutils
+COPY package.json /gdutils/
 RUN apt-get -qq update && \
     apt-get install -y software-properties-common && \
     rm -rf /var/lib/apt/lists/* && \
@@ -8,7 +8,6 @@ RUN apt-get -qq update && \
     apt-get install -y build-essential && \
     apt-get update && apt-get -y upgrade && apt-get install -y wget git curl nano unzip xz-utils htop python3 python3-pip ffmpeg pv jq python3-lxml p7zip-full p7zip-rar && \
     curl -sL https://deb.nodesource.com/setup_14.x | bash && apt-get install -y nodejs && apt-get install -y gcc g++ make parallel && \
-    cd /gdutils && \
     npm install dayjs --save && \
     npm install pm2 -g && \
     npm install --unsafe-perm=true --allow-root
