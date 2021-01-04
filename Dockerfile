@@ -1,6 +1,6 @@
 FROM ubuntu:latest
 WORKDIR /gdutils
-COPY . /gdutils
+COPY package.json /gdutils
 RUN apt-get -qq update && \
     apt-get install -y software-properties-common && \
     rm -rf /var/lib/apt/lists/* && \
