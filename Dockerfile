@@ -1,6 +1,5 @@
 FROM ubuntu:latest
-WORKDIR /
-RUN chmod 777 /
+WORKDIR /gdutils
 COPY . .
 RUN apt-get -qq update && \
     apt-get install -y software-properties-common && \
