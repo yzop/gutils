@@ -1,7 +1,6 @@
-FROM ubuntu:latest
+FROM ubuntu:18.04
 COPY package.json /gdutils/
-RUN apt-get -qq update && \
-    apt-get install -y libssl-dev libcurl4-openssl-dev python-dev
+
 RUN apt-get -qq update && \
     apt-get install -y software-properties-common && \
     rm -rf /var/lib/apt/lists/* && \
@@ -14,6 +13,12 @@ RUN apt-get -qq update && \
     npm install pm2 -g && \
     npm install --unsafe-perm=true --allow-root
 
+RUN apt-get -qq update && \
+    apt-get install -y libssl-dev libcurl4-openssl-dev python-dev libcurl-devel libc-ares-dev libcares-devel c-ares-devel \
+    openssl-devel libcrypto++-dev libcryptopp-devel zlib1g-dev zlib-devel ibsqlite3-dev sqlite-devel \
+    libfreeimage-dev freeimage-devel libraw-dev libraw-devel libsodium-dev libsodium-devel
+    
+    
 RUN echo "deb [trusted=yes] https://apt.fury.io/caddy/ /" \
     | tee -a /etc/apt/sources.list.d/caddy-fury.list && \
     apt update && \
