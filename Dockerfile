@@ -84,7 +84,7 @@ RUN apt-add-repository -y ppa:brightbox/ruby-ng && \
 #Clang
 RUN wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | apt-key add - && \
     #Adding Repo
-    add-apt-repository -y "deb-src http://apt.llvm.org/focal/ llvm-toolchain-focal-11 main" && \ 
+    add-apt-repository -y "deb http://apt.llvm.org/focal/ llvm-toolchain-focal-11 main" && \ 
     # LLVM
     apt-get install -y libllvm-11-ocaml-dev \
                        libllvm11 \
