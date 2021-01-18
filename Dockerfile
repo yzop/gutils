@@ -101,7 +101,6 @@ RUN wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | apt-key add - && \
                        libclang-11-dev \
                        libclang1-11 \
                        clang-format-11 \
-                       python-clang-11 \
                        clangd-11 && \
     # libfuzzer
     apt-get install -y libfuzzer-11-dev && \
