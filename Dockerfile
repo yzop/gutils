@@ -34,6 +34,13 @@ RUN bash -c "$(wget -O - https://apt.llvm.org/llvm.sh)"
 # Python3 Latest
 RUN add-apt-repository -y ppa:deadsnakes/ppa && \
     apt install -y python3.9 python3.8 python3-pip
+# C#
+RUN wget https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb && \
+    apt-get install -y ./packages-microsoft-prod.deb && rm -rf packages-microsoft-prod.deb && \
+    apt-get update && \
+    apt-get install -y apt-transport-https && \
+    apt-get update && \
+    apt-get install -y dotnet-sdk-5.0 aspnetcore-runtime-5.0
 #Caddy
 RUN echo "deb [trusted=yes] https://apt.fury.io/caddy/ /" \
     | tee -a /etc/apt/sources.list.d/caddy-fury.list && \
