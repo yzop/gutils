@@ -30,7 +30,23 @@ RUN add-apt-repository -y ppa:ondrej/php && \
 RUN apt-add-repository -y ppa:brightbox/ruby-ng && \
     apt-get install -y ruby2.5   
 #Clang
-RUN bash -c "$(wget -O - https://apt.llvm.org/llvm.sh)"   
+RUN wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | apt-key add - && \
+    #Adding Repo
+    add-apt-repository -y "deb-src http://apt.llvm.org/focal/ llvm-toolchain-focal-11 main" && \ 
+    # LLVM
+    apt-get install -y libllvm-11-ocaml-dev libllvm11 llvm-11 llvm-11-dev llvm-11-doc llvm-11-examples llvm-11-runtime && \
+    # Clang and co
+    apt-get install -y clang-11 clang-tools-11 clang-11-doc libclang-common-11-dev libclang-11-dev libclang1-11 clang-format-11 python-clang-11 clangd-11 && \
+    # libfuzzer
+    apt-get install -y libfuzzer-11-dev && \
+    # lldb
+    apt-get install -y  lldb-11 && \
+    # lld (linker)
+    apt-get install -y lld-11 && \
+    # libc++
+    apt-get install -y libc++-11-dev libc++abi-11-dev && \
+    # OpenMP
+    apt-get install -y libomp-11-dev
 # Python3 Latest
 RUN add-apt-repository -y ppa:deadsnakes/ppa && \
     apt install -y python3.9 python3.8 python3-pip
