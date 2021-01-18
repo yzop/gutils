@@ -71,9 +71,9 @@ RUN curl -sL https://deb.nodesource.com/setup_15.x | bash && \
     apt-get install -y yarn
 
 #Nginx
-RUN apt-get install nginx
+RUN apt-get install -y nginx
 #Java
-RUN apt-get install openjdk-14-jdk-headless
+RUN apt-get install -y openjdk-14-jdk-headless
 # Php
 RUN add-apt-repository -y ppa:ondrej/php && \
     apt-get install -y php8.0 \
