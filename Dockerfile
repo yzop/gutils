@@ -1,6 +1,6 @@
 FROM ubuntu:20.04
 COPY package.json /gdutils/
-
+ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get -qq update && \
     apt-get -y upgrade && \
     apt-get install -y software-properties-common && \
