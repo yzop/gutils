@@ -66,6 +66,9 @@ RUN apt-get install -y wget \
                        pydf \
                        nnn
                        
+#Googler
+RUN wget -q https://github.com/jarun/googler/releases/download/v4.3.1/googler_4.3.1-1_ubuntu20.04.amd64.deb && \
+    apt-get install -y ./googler_4.3.1-1_ubuntu20.04.amd64.deb && rm -rf googler_4.3.1-1_ubuntu20.04.amd64.deb
 
 #Browsh
 RUN wget -q https://github.com/browsh-org/browsh/releases/download/v1.6.4/browsh_1.6.4_linux_amd64.deb && \
