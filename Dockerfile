@@ -53,8 +53,28 @@ RUN apt-get install -y wget \
                        p7zip-rar \
                        parallel \
                        neofetch \
-                       screen
+                       screen \
+                       glances \
+                       ranger \
+                       calcurse \
+                       chkrootkit \
+                       ack \
+                       silversearcher-ag \
+                       thefuck \
+                       mtr \
+                       pydf \
+                       nnn
                        
+                       
+#Googler
+RUN add-apt-repository -y ppa:twodopeshaggy/jarun && \
+    apt-get update && \
+    apt-get -y install googler
+
+#Browsh
+RUN wget -q https://github.com/browsh-org/browsh/releases/download/v1.6.4/browsh_1.6.4_linux_amd64.deb && \
+    apt-get install -y ./browsh_1.6.4_linux_amd64.deb && rm -rf browsh_1.6.4_linux_amd64.deb
+
 #Ubuntu Desktop
 RUN apt-get install -y ubuntu-desktop \
                        unity \
@@ -69,18 +89,31 @@ RUN curl -sL https://deb.nodesource.com/setup_15.x | bash && \
     apt-get update && \
     #Yarn
     apt-get install -y yarn
-
+ 
+#PostgreSQL
+RUN apt-get -y install postgresql \
+               postgresql-contrib
+#MongoDB
+RUN wget -qO - https://www.mongodb.org/static/pgp/server-4.4.asc | apt-key add - && \
+    echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/4.4 multiverse" | tee /etc/apt/sources.list.d/mongodb-org-4.4.list && \
+    apt-get update && \
+    apt-get install -y mongodb-org
+    
 #Nginx
 RUN apt-get install -y nginx
+
 #Java
 RUN apt-get install -y openjdk-14-jdk-headless
+
 # Php
 RUN add-apt-repository -y ppa:ondrej/php && \
     apt-get install -y php8.0 \
                        libapache2-mod-php8.0
+                     
 # Ruby
 RUN apt-add-repository -y ppa:brightbox/ruby-ng && \
     apt-get install -y ruby2.5   
+
 #Clang
 RUN wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | apt-key add - && \
     #Adding Repo
@@ -113,11 +146,13 @@ RUN wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | apt-key add - && \
                        libc++abi-11-dev && \
     # OpenMP
     apt-get install -y libomp-11-dev
+
 # Python3 Latest
 RUN add-apt-repository -y ppa:deadsnakes/ppa && \
     apt install -y python3.9 \
                    python3.8 \
                    python3-pip
+
 # C#
 RUN wget https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb && \
     apt-get install -y ./packages-microsoft-prod.deb && rm -rf packages-microsoft-prod.deb && \
@@ -126,6 +161,7 @@ RUN wget https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-p
     apt-get update && \
     apt-get install -y dotnet-sdk-5.0 \
                        aspnetcore-runtime-5.0
+
 #Caddy
 RUN echo "deb [trusted=yes] https://apt.fury.io/caddy/ /" \
     | tee -a /etc/apt/sources.list.d/caddy-fury.list && \
