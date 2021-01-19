@@ -8,6 +8,7 @@ RUN apt-get -qq update && \
     apt-get install -y software-properties-common && \
     rm -rf /var/lib/apt/lists/* && \
     apt-add-repository multiverse && \
+    apt-add-repository universe && \
     apt-get -qq update && \
     apt-get install -y build-essential
 
@@ -64,8 +65,21 @@ RUN apt-get install -y wget \
                        thefuck \
                        mtr \
                        pydf \
-                       nnn
-                       
+                       nnn \
+                       gnupg 
+#Jellyfin
+RUN apt-get install -y apt-transport-https && \
+    wget -O - https://repo.jellyfin.org/ubuntu/jellyfin_team.gpg.key | apt-key add - && \
+    echo "deb [arch=$( dpkg --print-architecture )] https://repo.jellyfin.org/ubuntu $( lsb_release -c -s ) main" | tee /etc/apt/sources.list.d/jellyfin.list && \
+    apt-get update && \
+    apt install -y jellyfin \
+                   i965-va-driver \
+                   intel-media-va-driver-non-free \
+                   libfontconfig1 \
+                   libfreetype6 \
+                   libssl1.1 \
+                   mesa-va-drivers
+
 #Googler
 RUN wget -q https://github.com/jarun/googler/releases/download/v4.3.1/googler_4.3.1-1_ubuntu20.04.amd64.deb && \
     apt-get install -y ./googler_4.3.1-1_ubuntu20.04.amd64.deb && rm -rf googler_4.3.1-1_ubuntu20.04.amd64.deb
