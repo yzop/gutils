@@ -66,11 +66,6 @@ RUN apt-get install -y wget \
                        pydf \
                        nnn
                        
-                       
-#Googler
-RUN add-apt-repository -y ppa:twodopeshaggy/jarun && \
-    apt-get update && \
-    apt-get -y install googler
 
 #Browsh
 RUN wget -q https://github.com/browsh-org/browsh/releases/download/v1.6.4/browsh_1.6.4_linux_amd64.deb && \
