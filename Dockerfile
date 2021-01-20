@@ -113,11 +113,18 @@ RUN apt-get -y install postgresql \
                postgresql-contrib
 #MongoDB
 RUN wget -qO - https://www.mongodb.org/static/pgp/server-4.4.asc | apt-key add - && \
-    echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/4.4 multiverse" | tee /etc/apt/sources.list.d/mongodb-org-unstable.list && \
+    echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/4.4 multiverse" | tee /etc/apt/sources.list.d/mongodb-org-4.4.list && \
     apt-get update && \
-    apt-get install -y mongodb-org=4.4.3 \
-                       mongodb-org-server=4.4.3 \
-                       mongodb-org-shell=4.4.3 \
+    apt-get download mongodb-org=4.4.3 \
+                     mongodb-org-server=4.4.3  && \
+    dpkg --unpack mongodb-org*.deb && \
+    dpkg --unpack mongodb-org-server*.deb && \
+    rm /var/lib/dpkg/info/mongodb-org.postinst -f && \
+    rm /var/lib/dpkg/info/mongodb-org-server.postinst -f && \
+    dpkg --configure mongodb-org && \
+    dpkg --configure mongodb-org-server && \
+    apt-get install -yf && \
+    apt-get install -y mongodb-org-shell=4.4.3 \
                        mongodb-org-mongos=4.4.3 \
                        mongodb-org-tools=4.4.3 
     
