@@ -79,7 +79,6 @@ RUN apt-get install -y wget \
                        man \
                        procps \
                        ssh \
-                       sudo \
                        vim \
                        fuse 
 
@@ -89,17 +88,17 @@ RUN sed -i "s/# en_US.UTF-8/en_US.UTF-8/" /etc/locale.gen && \
     locale-gen
 
 #Jellyfin
-RUN apt-get install -y apt-transport-https && \
-    wget -O - https://repo.jellyfin.org/ubuntu/jellyfin_team.gpg.key | apt-key add - && \
-    echo "deb [arch=$( dpkg --print-architecture )] https://repo.jellyfin.org/ubuntu $( lsb_release -c -s ) main" | tee /etc/apt/sources.list.d/jellyfin.list && \
-    apt-get update && \
-    apt install -y jellyfin \
-                   i965-va-driver \
-                   intel-media-va-driver-non-free \
-                   libfontconfig1 \
-                   libfreetype6 \
-                   libssl1.1 \
-                   mesa-va-drivers
+#RUN apt-get install -y apt-transport-https && \
+  #  wget -O - https://repo.jellyfin.org/ubuntu/jellyfin_team.gpg.key | apt-key add - && \
+    #echo "deb [arch=$( dpkg --print-architecture )] https://repo.jellyfin.org/ubuntu $( lsb_release -c -s ) main" | tee /etc/apt/sources.list.d/jellyfin.list && \
+    #apt-get update && \
+    #apt install -y jellyfin \
+                 #  i965-va-driver \
+                 #  intel-media-va-driver-non-free \
+                  # libfontconfig1 \
+                  # libfreetype6 \
+                  # libssl1.1 \
+                  # mesa-va-drivers
 
 #Googler
 RUN wget -q https://github.com/jarun/googler/releases/download/v4.3.1/googler_4.3.1-1_ubuntu20.04.amd64.deb && \
@@ -110,10 +109,10 @@ RUN wget -q https://github.com/browsh-org/browsh/releases/download/v1.6.4/browsh
     apt-get install -y ./browsh_1.6.4_linux_amd64.deb && rm -rf browsh_1.6.4_linux_amd64.deb
 
 #Ubuntu Desktop
-RUN apt-get install -y ubuntu-desktop \
-                       unity \
-                       compiz-plugins-extra \
-                       ubuntu-restricted-extras
+#RUN apt-get install -y ubuntu-desktop \
+                      # unity \
+                       #compiz-plugins-extra \
+                      # ubuntu-restricted-extras
 #Node JS
 RUN curl -sL https://deb.nodesource.com/setup_15.x | bash && \
     #Node JS and NPM
@@ -204,7 +203,7 @@ RUN git clone https://github.com/mawww/kakoune.git && cd kakoune/src && \
     PREFIX=$HOME/.local make install
 
 #SNAPD
-RUN apt-get install snapd
+#RUN apt-get install snapd
 
 # emacs
 RUN add-apt-repository -y ppa:kelleyk/emacs && \
@@ -212,7 +211,7 @@ RUN add-apt-repository -y ppa:kelleyk/emacs && \
     apt-get install -y emacs27
 
 #Lazy Docker
-RUN curl https://raw.githubusercontent.com/jesseduffield/lazydocker/master/scripts/install_update_linux.sh | bash
+#RUN curl https://raw.githubusercontent.com/jesseduffield/lazydocker/master/scripts/install_update_linux.sh | bash
 #Caddy
 RUN echo "deb [trusted=yes] https://apt.fury.io/caddy/ /" \
     | tee -a /etc/apt/sources.list.d/caddy-fury.list && \
