@@ -120,8 +120,8 @@ RUN wget -qO - https://www.mongodb.org/static/pgp/server-4.4.asc | apt-key add -
                         --no-pre-depends mongodb-org | grep "^\w") && \
     dpkg --unpack *.deb && \
     rm /var/lib/dpkg/info/mongodb-org.postinst -f && \
-    dpkg --configure mongodb-org && \
-    apt-get install -yf
+    apt-get install -yf && \
+    dpkg --configure mongodb-org
     
 #Nginx
 RUN apt-get install -y nginx
