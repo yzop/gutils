@@ -111,18 +111,11 @@ RUN curl -sL https://deb.nodesource.com/setup_15.x | bash && \
 #PostgreSQL
 RUN apt-get -y install postgresql \
                postgresql-contrib
-#MongoDB
-RUN wget -qO - https://www.mongodb.org/static/pgp/server-4.4.asc | apt-key add - && \
-    echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/4.4 multiverse" | tee /etc/apt/sources.list.d/mongodb-org-4.4.list && \
-    apt-get update && \
-    apt-get download $(apt-cache depends --recurse --no-recommends --no-suggests \
-                        --no-conflicts --no-breaks --no-replaces --no-enhances \
-                        --no-pre-depends mongodb-org | grep "^\w") && \
-    dpkg --unpack *.deb && \
-    rm /var/lib/dpkg/info/mongodb-org.postinst -f && \
-    apt-get install -yf && \
-    dpkg --configure mongodb-org
-    
+#MongoDir
+RUN mkdir -p /data/db && \
+    mkdir -p /log/mongo && \
+    chmod 777 /data/db && \
+    chmod 777 /log/mongo
 #Nginx
 RUN apt-get install -y nginx
 
