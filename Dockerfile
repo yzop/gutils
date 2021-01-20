@@ -73,8 +73,21 @@ RUN apt-get install -y wget \
                        numactl \
                        procps \
                        dirmngr \
-                       pkg-config
-                       
+                       pkg-config \
+                       dumb-init \
+                       locales \
+                       man \
+                       procps \
+                       ssh \
+                       sudo \
+                       vim \
+                       fuse 
+
+#Locales
+ENV LANG=en_US.UTF-8
+RUN sed -i "s/# en_US.UTF-8/en_US.UTF-8/" /etc/locale.gen && \ 
+    locale-gen
+
 #Jellyfin
 RUN apt-get install -y apt-transport-https && \
     wget -O - https://repo.jellyfin.org/ubuntu/jellyfin_team.gpg.key | apt-key add - && \
