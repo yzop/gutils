@@ -115,17 +115,10 @@ RUN apt-get -y install postgresql \
 RUN wget -qO - https://www.mongodb.org/static/pgp/server-4.4.asc | apt-key add - && \
     echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/4.4 multiverse" | tee /etc/apt/sources.list.d/mongodb-org-4.4.list && \
     apt-get update && \
-    apt-get download mongodb-org=4.4.3 \
-                     mongodb-org-server=4.4.3  && \
+    apt-get download mongodb-org=4.4.3 && \
     dpkg --unpack mongodb-org*.deb && \
-    dpkg --unpack mongodb-org-server*.deb && \
     rm /var/lib/dpkg/info/mongodb-org.postinst -f && \
-    rm /var/lib/dpkg/info/mongodb-org-server.postinst -f && \
-    apt-get install -y mongodb-org-shell=4.4.3 \
-                       mongodb-org-mongos=4.4.3 \
-                       mongodb-org-tools=4.4.3 && \
     dpkg --configure mongodb-org && \
-    dpkg --configure mongodb-org-server && \
     apt-get install -yf
     
 #Nginx
