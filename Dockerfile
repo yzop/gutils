@@ -199,17 +199,17 @@ RUN wget https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-p
 RUN apt-get install -y bcal \
                        neovim                       
 #Kakoune
-RUN git clone https://github.com/mawww/kakoune.git && cd kakoune/src && \
-    make && \
-    PREFIX=$HOME/.local make install
+#RUN git clone https://github.com/mawww/kakoune.git && cd kakoune/src && \
+    #make && \
+    #PREFIX=$HOME/.local make install
 
 #SNAPD
 #RUN apt-get install snapd
 
 # emacs
-RUN add-apt-repository -y ppa:kelleyk/emacs && \
-    apt-get update && \
-    apt-get install -y emacs27
+#RUN add-apt-repository -y ppa:kelleyk/emacs && \
+   # apt-get update && \
+    #apt-get install -y emacs27
 
 #Lazy Docker
 #RUN curl https://raw.githubusercontent.com/jesseduffield/lazydocker/master/scripts/install_update_linux.sh | bash
