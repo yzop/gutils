@@ -181,9 +181,7 @@ RUN wget https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-p
 
 #Utils2
 RUN apt-get install -y bcal \
-                       neovim \
-                       yq
-                       
+                       neovim                       
 #Kakoune
 RUN apt install -t libncursesw5-dev pkg-config && \
     git clone https://github.com/mawww/kakoune.git && cd kakoune/src && \
