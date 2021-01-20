@@ -72,7 +72,8 @@ RUN apt-get install -y wget \
                        ca-certificates \
                        numactl \
                        procps \
-                       dirmngr
+                       dirmngr \
+                       pkg-config
                        
 #Jellyfin
 RUN apt-get install -y apt-transport-https && \
@@ -185,8 +186,7 @@ RUN wget https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-p
 RUN apt-get install -y bcal \
                        neovim                       
 #Kakoune
-RUN apt install -t pkg-config && \
-    git clone https://github.com/mawww/kakoune.git && cd kakoune/src && \
+RUN git clone https://github.com/mawww/kakoune.git && cd kakoune/src && \
     make && \
     PREFIX=$HOME/.local make install
 
