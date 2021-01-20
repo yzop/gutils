@@ -29,6 +29,8 @@ RUN apt-get install -y libssl-dev \
                        libsodium-dev \
                        libsqlite3-dev \
                        libncurses-dev \
+                       libncursesw5-dev \
+                       libncurses5-dev \
                        libgdbm-dev \
                        libnss3-dev \
                        libreadline-dev \
