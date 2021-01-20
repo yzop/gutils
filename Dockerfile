@@ -70,8 +70,7 @@ RUN apt-get install -y wget \
                        ca-certificates \
                        numactl \
                        procps \
-                       dirmngr \
-                       gnupg-curl
+                       dirmngr
                        
 #Jellyfin
 RUN apt-get install -y apt-transport-https && \
