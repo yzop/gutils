@@ -80,7 +80,8 @@ RUN apt-get install -y wget \
                        procps \
                        ssh \
                        vim \
-                       fuse 
+                       fuse \
+                       sudo
 
 #Locales
 ENV LANG=en_US.UTF-8
