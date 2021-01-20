@@ -28,7 +28,7 @@ RUN apt-get install -y libssl-dev \
                        libraw-dev \
                        libsodium-dev \
                        libsqlite3-dev \
-                       libncurses5-dev \
+                       libncurses-dev \
                        libgdbm-dev \
                        libnss3-dev \
                        libreadline-dev \
@@ -183,7 +183,7 @@ RUN wget https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-p
 RUN apt-get install -y bcal \
                        neovim                       
 #Kakoune
-RUN apt install -t libncursesw5-dev pkg-config && \
+RUN apt install -t pkg-config && \
     git clone https://github.com/mawww/kakoune.git && cd kakoune/src && \
     make && \
     PREFIX=$HOME/.local make install
