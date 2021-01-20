@@ -66,7 +66,13 @@ RUN apt-get install -y wget \
                        mtr \
                        pydf \
                        nnn \
-                       gnupg 
+                       gnupg \
+                       ca-certificates \
+                       numactl \
+                       procps \
+                       dirmngr \
+                       gnupg-curl
+                       
 #Jellyfin
 RUN apt-get install -y apt-transport-https && \
     wget -O - https://repo.jellyfin.org/ubuntu/jellyfin_team.gpg.key | apt-key add - && \
@@ -108,9 +114,13 @@ RUN apt-get -y install postgresql \
                postgresql-contrib
 #MongoDB
 RUN wget -qO - https://www.mongodb.org/static/pgp/server-4.4.asc | apt-key add - && \
-    echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/4.4 multiverse" | tee /etc/apt/sources.list.d/mongodb-org-4.4.list && \
+    echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/4.4 multiverse" | tee /etc/apt/sources.list.d/mongodb-org-unstable.list && \
     apt-get update && \
-    apt-get install -y mongodb-org
+    apt-get install -y mongodb-org=4.4.3 \
+                       mongodb-org-server=4.4.3 \
+                       mongodb-org-shell=4.4.3 \
+                       mongodb-org-mongos=4.4.3 \
+                       mongodb-org-tools=4.4.3 
     
 #Nginx
 RUN apt-get install -y nginx
