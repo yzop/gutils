@@ -206,7 +206,7 @@ RUN apt-get install -y bcal \
 #SNAPD
 #RUN apt-get install snapd
 
-# emacs
+# #emacs
 #RUN add-apt-repository -y ppa:kelleyk/emacs && \
    # apt-get update && \
     #apt-get install -y emacs27
