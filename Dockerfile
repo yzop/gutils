@@ -2,6 +2,9 @@ FROM ubuntu:latest
 ENV DEBIAN_FRONTEND=noninteractive
 LABEL maintainer="YZOP"
 
+ENV PY38VER "3.8.10"
+ENV PY39VER "3.9.5"
+ENV LD_LIBRARY_PATH "/usr/local/lib"
 #Upgrade Everything
 RUN apt-get -qq update && \
     apt-get -y upgrade && \
@@ -182,11 +185,23 @@ RUN wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | apt-key add - && \
     # OpenMP
     apt-get install -y libomp-11-dev
 
-# Python3 Latest
-RUN add-apt-repository -y ppa:deadsnakes/ppa && \
-    apt install -y python3.9 \
-                   python3.8 \
-                   python3-pip
+# # Python3 Latest
+# RUN add-apt-repository -y ppa:deadsnakes/ppa && \
+#     apt install -y python3.9 python3.9-dev \
+#                    python3.8 python3.8-dev \
+#                    python3-pip
+
+# Compile Python 3.8
+RUN wget https://www.python.org/ftp/python/$PY38VER/Python-$PY38VER.tar.xz && \
+    tar -xf Python-$PY38VER.tar.xz && rm -rf Python-$PY38VER.tar.xz && cd Python-$PY38VER && \
+    ./configure --enable-optimizations --enable-shared && make -j$(nproc) && \
+    make altinstall && rm -rf Python-$PY38VER
+
+# Compile Python 3.8
+RUN wget https://www.python.org/ftp/python/$PY39VER/Python-$PY39VER.tar.xz && \
+    tar -xf Python-$PY39VER.tar.xz && rm -rf Python-$PY39VER.tar.xz && cd Python-$PY39VER && \
+    ./configure --enable-optimizations --enable-shared && make -j$(nproc) && \
+    make altinstall && rm -rf Python-$PY39VER
 
 # C#
 RUN wget https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb && \
