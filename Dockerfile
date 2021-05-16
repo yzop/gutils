@@ -41,7 +41,7 @@ RUN apt-get install -y libssl-dev \
                        make \
                        cmake \
                        uidmap \
-                       m4 \
+                       m4
                        
 #Utils 
 RUN apt-get install -y wget \
