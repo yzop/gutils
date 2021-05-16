@@ -40,7 +40,9 @@ RUN apt-get install -y libssl-dev \
                        g++ \
                        make \
                        cmake \
-                       uidmap
+                       uidmap \
+                       m4 \
+                       
 #Utils 
 RUN apt-get install -y wget \
                        git \
